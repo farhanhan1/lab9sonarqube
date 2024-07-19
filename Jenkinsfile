@@ -24,10 +24,10 @@ pipeline {
         }
         stage('SonarQube analysis') {
             environment {
-                scannerHome = tool 'SSDSONARQUBE'
+                scannerHome = tool 'SonarQube'
             }
             steps {
-                withSonarQubeEnv('SSDSONARQUBE') {
+                withSonarQubeEnv('SonarQube') {
                     sh "${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=OWASP -Dsonar.host.url=http://172.18.0.2:9000 -Dsonar.sources=. -Dsonar.java.binaries=target/classes"
                 }
             }
